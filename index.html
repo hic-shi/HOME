@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
+    <title>HP</title>
+    <meta property="og:url" content="https://sakazukiaoi.github.io/HIC_SHI/" />
+    <meta property="og:type" content="website" /> 
+    <meta property="og:title" content="HIC_SHI" /> 
+    <meta property="og:description" content="" /> 
+    <meta property="og:site_name" content="HIC_SHI" /> 
+    <meta property="og:image" content="https://pbs.twimg.com/media/G6IaDdAbYAAXHK4?format=jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="概要">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="twitter:card" content="？">
+    <meta name="twitter:title" content="ツイッターカードタイトル">
+    <meta name="twitter:description" content="ツイッターカード概要">
+    <meta name="twitter:image" content="ツイッターカード画像">
+
+ <style>
+header {
+    background-color: aqua;
+}
+main {
+    height: 100px;
+    background-color: blanchedalmond;
+}
+ </style>
+</head>
+<body>
+    <header>
+        <div id="ヘッダー"></div>
+    </header>
+    <main>
+            内容
+    </main>
+    <script>
+        fetch("header.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("ヘッダー").innerHTML = html;
+  }).then(initHeaderAnimation);
+
+    </script>
+</body>
+</html>
