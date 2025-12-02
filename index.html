@@ -2,6 +2,7 @@
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
     <title>HP</title>
+    <link rel="icon" href="https://sakazukiaoi.github.io/HIC_SHI_gallery/favicon.png">
     <meta property="og:url" content="https://sakazukiaoi.github.io/HIC_SHI/" />
     <meta property="og:type" content="website" /> 
     <meta property="og:title" content="HIC_SHI" /> 
@@ -16,30 +17,32 @@
     <meta name="twitter:title" content="ツイッターカードタイトル">
     <meta name="twitter:description" content="ツイッターカード概要">
     <meta name="twitter:image" content="ツイッターカード画像">
+    <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+    #headerHOME {
+        color: #0d2613;
+        background-color: rgb(196, 210, 196);
+    }
+    header button {
+    color: #888888;
+    }
 
- <style>
-header {
-    background-color: aqua;
-}
-main {
-    height: 100px;
-    background-color: blanchedalmond;
-}
- </style>
+</style>
 </head>
 <body>
     <header>
         <div id="ヘッダー"></div>
     </header>
     <main>
-<p>バナーが欲しくて突貫工事中。来年1月完成予定。</p>
+<h1>Hello Welcome</h1>
+
     </main>
     <script>
         fetch("header.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("ヘッダー").innerHTML = html;
-  }).then(initHeaderAnimation);
+  }).then();
 
     </script>
 </body>
