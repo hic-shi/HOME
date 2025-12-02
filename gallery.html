@@ -334,16 +334,11 @@ display: block;
 </head>
 <body>
     <header>
-        <div id="ヘッダー"></div>
-    <script>
-        fetch("header.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("ヘッダー").innerHTML = html;
-  }).then();
-    </script>
-    </header>
-    
+<a href="index.html"><button id="headerHOME">HOME</button></a>
+<a href="about.html"><button id="headerAbout" >About</button></a>
+<a href="links.html"><button id="headerLinks">Links</button></a>
+<a href="gallery.html"><button id="headerGalley">Gallery</button></a>
+    </header>    
 <div id="loader-wrapper">
     <div id="loader"></div>
 </div>
