@@ -2,7 +2,7 @@
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
     <title>HP</title>
-    <link rel="icon" href="HIC_SHI_ICON.png">
+    <link rel="icon" href="https://hic-shi.github.io/HOME/HIC_SHI_ICON.png">
     <meta property="og:url" content="https://sakazukiaoi.github.io/HIC_SHI/" />
     <meta property="og:type" content="website" /> 
     <meta property="og:title" content="HIC_SHI" /> 
@@ -31,19 +31,14 @@
 </head>
 <body>
     <header>
-        <div id="ヘッダー"></div>
+<a href="index.html"><button id="headerHOME">HOME</button></a>
+<a href="about.html"><button id="headerAbout" >About</button></a>
+<a href="links.html"><button id="headerLinks">Links</button></a>
+<a href="gallery.html"><button id="headerGalley">Gallery</button></a>
     </header>
     <main>
 <h1>Hello Welcome</h1>
 
     </main>
-    <script>
-        fetch("header.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("ヘッダー").innerHTML = html;
-  }).then();
-
-    </script>
 </body>
 </html>
