@@ -29,7 +29,7 @@ header button{
     flex-direction: column;
     margin-left: 2px;
     height: 30px;
-    width: 24vw;
+    width: 100px;
 }
 @media (max-width: 900px) {
 body {
@@ -60,10 +60,14 @@ header a{
     color: #aaaaaa;
     text-decoration: none;
 }
+header button{
+    width: 24vw;
+}
 #SNS_id{
     margin-top: 20px;
     position: absolute;
 }
+
 #banners {
     display: flex;
     flex-direction: column;
