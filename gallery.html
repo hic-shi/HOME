@@ -297,6 +297,9 @@ padding-bottom: 0;
     grid-column: span 2; 
 }
 }
+main{
+    width: 100%;
+}
 
 .work-card {
 border: 1px solid #ddd;
@@ -335,7 +338,8 @@ display: block;
 <a href="links.html"><button id="headerLinks">Links</button></a>
 <a href="gallery.html"><button id="headerGalley">Gallery</button></a>
     </header>    
-<div id="loader-wrapper">
+<main>
+    <div id="loader-wrapper">
     <div id="loader"></div>
 </div>
 
@@ -379,7 +383,6 @@ display: block;
 <p id="loadingStatus">date.jsonを読み込んでいます...</p>
 </div>
 </div>
-
 
 <script>
 let appData = { illustrations: [] };
@@ -732,5 +735,6 @@ function renderGallery(works = []) {
     });
 }
 </script>
+</main>
 </body>
 </html>
