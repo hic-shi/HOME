@@ -1,17 +1,13 @@
-html{
-    min-width: 310px;
-    overflow-x: hidden;
-}
-.htmll::-webkit-scrollbar{display:none;}
 body {
     font-family: sans-serif;
     margin: 11px;
+
     background-color: #f4f4f4;
     color: #535353;
     display: flex;
     flex-direction: row;
 }
-body::-webkit-scrollbar{display:none;}
+
 main {
     margin-left: 10px;
     height: auto;
@@ -30,7 +26,6 @@ header a{
 }
 header button{
     border: 1px solid #333;
-    flex-direction: column;
     margin-left: 2px;
     height: 30px;
     width: 100px;
@@ -39,13 +34,13 @@ header button{
 body {
     font-family: sans-serif;
     margin: 11px;
-    
+
     background-color: #f4f4f4;
     color: #535353;
     display: flex;
     flex-direction: column;
 }
-body::-webkit-scrollbar{display:none;}
+
 main {
     margin-top: 2%;
     height: auto;
@@ -58,7 +53,7 @@ header{
     flex-direction: row;
     justify-content: center;
     height: auto;
-    width: auto;    
+    width: auto;
 }
 header a{
     color: #aaaaaa;
@@ -85,21 +80,21 @@ h2 {margin-bottom: 0px;}
 h3 {margin-bottom: 0px;}
 
 #directory p {
- line-height: 0px;
+    line-height: 0px;
 }
 #SNS p {
- line-height: 10px;
+    line-height: 10px;
 }
 #SNS a {
     margin: 3px;
 }
 code {font-size: 14px;color: #ffffff; background-color: #575757;}
-#banners {
+#banner {
     display: flex;
     flex-direction: column;
     font-size: 10px;
 }
-#banners img {
+#banner img {
 width: 200px;
 }
 #SNS{
@@ -109,3 +104,7 @@ width: 200px;
     display: flex;
     flex-direction: column;
 }
+
+    header button {
+    color: #888888;
+    }
