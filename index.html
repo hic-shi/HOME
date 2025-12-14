@@ -5,24 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="https://hic-shi.github.io/HOME/HIC_SHI_ICON.png">
-    <link rel="apple-touch-icon" href="https://hic-shi.github.io/HOME/HIC_SHI_ICON.png" sizes="180x180">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary">
     <meta property="og:url" content="https://sakazukiaoi.github.io/HIC_SHI/" />
     <meta property="og:url" content="https://sakazukiaoi.github.io/HIC_SHI/index.html" />
     <meta property="og:site_name" content="HIC_SHI" /> 
-    <meta property="og:image" content="https://hic-shi.github.io/HOME/OGP_min.png" />
+    <meta property="og:image" content="OGP_min.png" />
     <meta property="og:title" content="HOME" /> 
-    <meta property="og:description" content="　" />
-    <meta name="twitter:card" content="summary">
+    <meta property="og:description" content="HIC_SHI ホームページ" />
     <meta name="twitter:site" content="HIC_SHI_NORI">
 <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        height: 100%;
+    }
+    header {
+        margin-top: 12px;
+        margin-left: 11px;
+        margin-right: 21x;
+    }
+    
     #headerHOME {
         color: #0d2613;
         background-color: rgb(196, 210, 196);
     }
     header button {
-    color: #888888;
+        color: #888888;
+    }
+
+    #column1-container {
+        position: relative; 
+        width: 100%;
+    }    
+    #background-layer {
+        position: relative; 
+        width: 100%;
+        height: 80vh;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 1s ease-in-out; 
+        z-index: 1; 
+    }
+
+    #content-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 2;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        font-family: sans-serif;
+        overflow: hidden;
+    }
+
+    /* キャラクター */
+    #character {
+        position: absolute;
+        bottom: 4%;
+        left: -12%;
+        width: 75%;
+        height: auto;
+    }
+    main {
+        width: 100%;
+        margin-top: 12px;
+        box-sizing: border-box;
+        display: flex;
+        min-height: calc(100vh - 40px - 80vh);
+    }
+    
+    .main-content-wrapper {
+        width: 80%;
+        margin: 0 auto;
+        padding: 10px 20% 10px 0; 
+    }
+
+    .main-content-wrapper p {
+        margin: 5px 0;
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+        @media (max-width: 600px) {
+        .main-content-wrapper p {
+        margin: 5px 0;
+        font-size: 0.9em;
+        line-height: 1.6;
+        } 
     }
 </style>
 </head>
@@ -33,8 +108,71 @@
 <a href="links.html"><button id="headerLinks">Links</button></a>
 <a href="gallery.html"><button id="headerGalley">Gallery</button></a>
     </header>
+
     <main>
-<h1>Hello Welcome</h1>
+    <div id="column1-container">
+        <div id="background-layer"></div>
+        <div id="content-layer">
+            <p id="time-display">読み込み中</p>
+            <img id="character" src="uchu.png" alt="NO image">
+        </div>
+    </div>
+     <div class="main-content-wrapper">
+      <div id="News">
+       <div class="News" id="NewsC">
+            <p>25.12.17 wiki</p>
+            <p>25.12.10 HIC_SHI</p>
+       </div>
+       <div class="News" id="NewsB">
+            <p>：<a href="https://scrapbox.io/hic-shi/">編集しました。</a></p>
+            <p>：<a href="https://www.pixiv.net/artworks/138456447">文化を公開しました。</a></p>
+       </div>
+            </div>
+        </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const background = document.getElementById('background-layer');
+        const timeDisplay = document.getElementById('time-display');
+        
+        // 外部画像URLがすべて同じだったため、ダミー画像URLに変更
+        const backgroundImages = {
+            morning: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png', // 5時 - 11時
+            day: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png',   // 12時 - 16時
+            night: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png'  // 17時 - 4時
+        };
+        
+        function updateTimeAndBackground() {
+            let hour;
+            let timePeriod;
+
+            const now = new Date();
+            hour = now.getHours();
+            
+            const timeString = now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit'});
+
+            let currentBgPath;
+
+            if (hour >= 5 && hour <= 11) {
+                timePeriod = '朝';
+                currentBgPath = backgroundImages.morning;
+            } else if (hour >= 12 && hour <= 16) {
+                timePeriod = '昼';
+                currentBgPath = backgroundImages.day;
+            } else {
+                timePeriod = '夜';
+                currentBgPath = backgroundImages.night;
+            }
+
+            background.style.backgroundImage = `url('${currentBgPath}')`;
+            
+            timeDisplay.textContent = `${timeString}`; 
+        }
+
+        updateTimeAndBackground();
+        setInterval(updateTimeAndBackground, 1000); 
+        });
+    </script>
 </body>
 </html>
