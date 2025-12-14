@@ -76,14 +76,13 @@
     main {
         width: 100%;
         margin-top: 12px;
-        box-sizing: border-box;
         display: flex;
         min-height: calc(100vh - 40px - 80vh);
     }
     
     .main-content-wrapper {
         width: 80%;
-        margin: 0 auto;
+        margin: auto ;
         padding: 10px 20% 10px 0; 
     }
 
@@ -93,8 +92,24 @@
         line-height: 1.6;
     }
         @media (max-width: 600px) {
+        header {
+        margin-top: 11px;
+        margin-left: 2px;
+        margin-right: 2px;
+        }
+        main {
+        width: 100%;
+        margin-left: -1px;
+        box-sizing: border-box;
+        display: flex;
+        min-height: calc(100vh - 40px - 80vh);
+        }
+        .main-content-wrapper {
+        width: 80%;
+        margin-left: 9px;
+        padding: 10px 20% 10px 0; 
+        }
         .main-content-wrapper p {
-        margin: 5px 0;
         font-size: 0.9em;
         line-height: 1.6;
         } 
@@ -113,7 +128,7 @@
     <div id="column1-container">
         <div id="background-layer"></div>
         <div id="content-layer">
-            <p id="time-display">読み込み中</p>
+            <p id="time-display"></p>
             <img id="character" src="uchu.png" alt="NO image">
         </div>
     </div>
@@ -136,11 +151,10 @@
         const background = document.getElementById('background-layer');
         const timeDisplay = document.getElementById('time-display');
         
-        // 外部画像URLがすべて同じだったため、ダミー画像URLに変更
         const backgroundImages = {
-            morning: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png', // 5時 - 11時
-            day: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png',   // 12時 - 16時
-            night: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png'  // 17時 - 4時
+            morning: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png',  // 5時 - 11時
+            day: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png',      // 12時 - 16時
+            night: 'https://pbs.twimg.com/media/G8GUbz0bQAAnDE-?format=png'     // 17時 - 4時
         };
         
         function updateTimeAndBackground() {
