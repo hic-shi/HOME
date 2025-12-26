@@ -13,7 +13,9 @@ main {
     display: flex;
     flex-direction: column;
 }
-
+img {
+  -webkit-user-drag: none;
+}
 header{
     display: flex;
     flex-direction: column;
@@ -111,5 +113,6 @@ width: 200px;
     display: flex;
 }
 .News{
+    display: flex;
     flex-direction: column;
 }
