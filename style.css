@@ -96,6 +96,9 @@ code {font-size: 14px;color: #ffffff; background-color: #575757;}
 img {
   -webkit-user-drag: none;
   -webkit-touch-callout:none;
+  -webkit-user-select:none; 
+  pointer-events:none; 
+  -webkit-touch-callout:none;
   position: relative;
 }
 *[draggable=true] img {
