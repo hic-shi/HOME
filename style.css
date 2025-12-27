@@ -13,9 +13,7 @@ main {
     display: flex;
     flex-direction: column;
 }
-img {
-  -webkit-user-drag: none;
-}
+
 header{
     display: flex;
     flex-direction: column;
@@ -94,6 +92,14 @@ code {font-size: 14px;color: #ffffff; background-color: #575757;}
     display: flex;
     flex-direction: column;
     font-size: 10px;
+}
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout:none;
+  position: relative;
+}
+*[draggable=true] img {
+  -webkit-touch-callout: none;
 }
 #banner img {
 width: 200px;
