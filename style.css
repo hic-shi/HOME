@@ -84,7 +84,16 @@ header button{
 h1 {margin-bottom: 0px;}
 h2 {margin-bottom: 0px;}
 h3 {margin-bottom: 0px;}
+a {
+    text-decoration: none;
+}
+a:link {
+ color: #59B3B3;
+}
 
+a:visited {
+ color: #e88e4e;
+}
 #directory p {
     line-height: 0px;
 }
