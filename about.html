@@ -103,7 +103,7 @@
     <script>
         function copyToClipboard(element) {
             // codeタグ内のテキストを取得
-            const textToCopy = element.querySelector('code').innerText;
+            const textToCopy = element.querySelector('code').textContent;
 
             // クリップボードにコピー
             navigator.clipboard.writeText(textToCopy).then(() => {
