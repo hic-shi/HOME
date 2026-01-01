@@ -36,6 +36,7 @@
     <main>
         <h3>HIC_SHI とは</h3>
         <p>坂月蒼を中心とした、創作活動の個人グループです。</p>
+        <p>依頼は<a href="work.html">こちら</a>から</p>
         <div id="directory">
         <p style="font-size: 20px; margin-top:10px;">HIC_SHI</p>
         <p>┣音魅帳</p>
@@ -94,7 +95,31 @@
         <br>
 <div id="banner">
     <img src="https://hic-shi.github.io/HOME/banner.png" alt="https://hic-shi.github.io/HOME/">
-<code>&lt;a href="https://hic-shi.github.io/HOME/"&gt;&lt;img src="https://hic-shi.github.io/HOME/banner.png" alt="HIC_SHI"&gt;&lt;/a&gt;</code>
+
+    <div class="copy-container" onclick="copyToClipboard(this)">
+        <code>&lt;a href="https://hic-shi.github.io/HOME/"&gt;&lt;img src="https://hic-shi.github.io/HOME/banner.png" alt="HIC_SHI"&gt;&lt;/a&gt;</code>
+        <span class="tooltip">コピーしました！</span>
+    </div>
+    <p>↑クリックでコピー</p>
+    <script>
+        function copyToClipboard(element) {
+            // codeタグ内のテキストを取得
+            const textToCopy = element.querySelector('code').innerText;
+
+            // クリップボードにコピー
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // ツールチップを表示するクラスを追加
+                element.classList.add('show-tooltip');
+
+                // 2秒後にクラスを削除して非表示にする
+                setTimeout(() => {
+                    element.classList.remove('show-tooltip');
+                }, 2000);
+            }).catch(err => {
+                console.error('コピーに失敗しました', err);
+            });
+        }
+    </script>
 </div>
     </main>
 </body>
