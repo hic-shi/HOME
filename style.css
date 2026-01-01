@@ -104,6 +104,51 @@ a:visited {
     margin: 3px;
 }
 code {font-size: 14px;color: #ffffff; background-color: #575757;}
+
+        /* コードを囲むコンテナのスタイル */
+        .copy-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+
+        /* ツールチップの基本設定（最初は非表示） */
+        .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* コードの上に表示 */
+            left: 50%;
+            margin-left: -180px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+        }
+
+        /* ツールチップの下の三角形（吹き出し風） */
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        /* 表示クラスが付与された時のスタイル */
+        .copy-container.show-tooltip .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
 #banner {
     display: flex;
     flex-direction: column;
