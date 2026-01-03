@@ -92,27 +92,32 @@
             <a href="https://x.com/HIC_SHI_NORI">個人x</a> </p>
         </div>
         </div>
-        <br>
-
-<div id="banner">
-    <img src="https://hic-shi.github.io/HOME/banner.png" alt="https://hic-shi.github.io/HOME/">
-
-    <div class="copy-container" onclick="copyToClipboard(this)">
-        <code>&lt;a href="https://hic-shi.github.io/HOME/"&gt;&lt;img src="https://hic-shi.github.io/HOME/banner.png" alt="HIC_SHI"&gt;&lt;/a&gt;</code>
+        <br><div id="banner">
+    <div class="copy-container" onclick="copyToClipboard(this, 'HIC')" style="cursor: pointer; position: relative;">
+        <img src="https://hic-shi.github.io/HOME/banner.png" alt="HIC_SHI">
         <span class="tooltip">コピーしました！</span>
     </div>
-    <p>↑クリックでコピー</p>
+    
+    <div class="copy-container" onclick="copyToClipboard(this, 'AGF')" style="cursor: pointer; position: relative;">
+        <img src="https://hic-shi.github.io/AGFos/banner.png" alt="AGFos">
+        <span class="tooltip">コピーしました！</span>
+    </div>
+    
+    <p>↑画像をクリックでリンクコードをコピー</p>
+
     <script>
-        function copyToClipboard(element) {
-            // codeタグ内のテキストを取得
-            const textToCopy = element.querySelector('code').textContent;
+        function copyToClipboard(element, type) {
+            let textToCopy = '';
 
-            // クリップボードにコピー
+            // typeの値によってコピーする内容を分岐させる
+            if (type === 'HIC') {
+                textToCopy = '<a href="https://hic-shi.github.io/HOME/"><img src="https://hic-shi.github.io/HOME/banner.png" alt="HIC_SHI"></a>';
+            } else if (type === 'AGF') {
+                textToCopy = '<a href="https://hic-shi.github.io/AGFos"><img src="https://hic-shi.github.io/AGFos/banner.png" alt="AGFos"></a>';
+            }
+
             navigator.clipboard.writeText(textToCopy).then(() => {
-                // ツールチップを表示するクラスを追加
                 element.classList.add('show-tooltip');
-
-                // 2秒後にクラスを削除して非表示にする
                 setTimeout(() => {
                     element.classList.remove('show-tooltip');
                 }, 2000);
@@ -121,6 +126,17 @@
             });
         }
     </script>
+
+    <style>
+        .tooltip {
+            transition: opacity 0.3s;
+        }
+
+        .show-tooltip .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </div>
     </main>
 </body>
