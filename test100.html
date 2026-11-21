@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ひとりごと</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", sans-serif;
+      background-color: #f4f5f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .post-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85em;
+      color: #888;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 6px;
+    }
+    .labels {
+      display: flex;
+      gap: 6px;
+    }
+    .label {
+      background: #e1ecf4;
+      color: #39739d;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.8em;
+    }
+    .post-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+    .post-body p {
+      margin: 0 0 10px 0;
+    }
+    .post-body p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="tegalog-timeline">読み込み中...</div>
+  </div>
+
+  <script>
+    const GITHUB_USER = 'hic-shi';
+    const GITHUB_REPO = 'home';
+
+    const timelineEl = document.getElementById('tegalog-timeline');
+
+    marked.setOptions({ breaks: true });
+
+    async function fetchPosts() {
+      try {
+        const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/issues?state=open&per_page=30`;
+        const response = await fetch(url);
+        
+        if (!response.ok) throw new Error('データの取得に失敗しました');
+        const issues = await response.json();
+
+        const posts = issues.filter(issue => !issue.pull_request);
+
+        if (posts.length === 0) {
+          timelineEl.innerHTML = '<p>まだ投稿がありません。</p>';
+          return;
+        }
+
+        timelineEl.innerHTML = posts.map(post => {
+          const d = new Date(post.created_at);
+          const dateStr = `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+
+          const labelsHtml = post.labels.map(label => 
+            `<span class="label" style="background-color:#${label.color}22; color:#333; border:1px solid #${label.color};">${label.name}</span>`
+          ).join('');
+
+          const bodyHtml = post.body ? marked.parse(post.body) : '';
+
+          return `
+            <article class="post-card">
+              <div class="post-meta">
+                <span class="date">${dateStr}</span>
+                <div class="labels">${labelsHtml}</div>
+              </div>
+              <div class="post-body">
+                ${bodyHtml}
+              </div>
+            </article>
+          `;
+        }).join('');
+
+      } catch (error) {
+        console.error(error);
+        timelineEl.innerHTML = '<p>読み込みエラーが発生しました。リポジトリがPublicになっているか確認してください。</p>';
+      }
+    }
+
+    fetchPosts();
+  </script>
+
+</body>
+</html>
